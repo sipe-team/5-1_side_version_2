@@ -27,7 +27,8 @@ SIDE ver.2 묙표: SIDE ver.1 업그레이드
     3. 각자 PR 을 보고, PR 코멘트를 달거나 따봉 emoji 를 달아서 공유 상황 확인
     4. 매주 그 주의 진행자가, week/[week-N.md](http://week-n.md/)파일에 회의 내용 정리
     (마블룰렛을 통한 공정성 확보: 전민지> 김민지> 염진호> 오소현> 이원주> 김영빈> 양정민)
-    ![스크린샷 2026-03-29 22.13.37.png](attachment:4c162325-24bd-406d-8a04-8e2256122869:스크린샷_2026-03-29_22.13.37.png)
+   <img width="205" height="225" alt="스크린샷 2026-03-29 22 13 37" src="https://github.com/user-attachments/assets/7c6340a2-547e-4f3a-85a3-dfdc63ac6ef6" />
+
     
 - https://github.com/sipe-team/5-1_side_version_2/blob/main/discussions/000-OT.md 살펴보기
     - 현재 프로젝트 상태 요약
