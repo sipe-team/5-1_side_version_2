@@ -1,6 +1,7 @@
 ## 사이프 디자인 시스템 피그마
 
 : 전달받은 구글 이메일로 로그인 후 사용해주세요
+
 https://www.figma.com/design/EVxUFhOfCTmOXsgED5RU9B/SIDE--sipe-design-system?node-id=0-1&t=z41vHrVWyqYcNIyb-1
 
 ## 1. 피그마 컴포넌트 현황
@@ -9,9 +10,9 @@ https://www.figma.com/design/EVxUFhOfCTmOXsgED5RU9B/SIDE--sipe-design-system?nod
 
 | 항목 | 세부 내용 |
 | --- | --- |
-| **Color** | Atomic (Gray / Red / Pink / Purple / Cyan / Blue / Teal / Green / Yellow / Orange 각 050~950) + Theme 기수별 (1st~4th) + Semantic (text / background / accent / warning / danger / positive) |
-| **Typography** | Pretendard Variable, font-size 050(12px)~900(48px), weight 400·500·600·700, line-height regular(150%) / compact(130%) |
-| **Spacing** | 기본 단위 4px, space-050(4px) ~ space-900(60px) |
+| **Color** | Atomic (Gray / Red / Pink / Purple / Cyan / Blue / Teal / Green / Yellow / Orange 각 050-950) + Theme 기수별 (1st-4th) + Semantic (text / background / accent/ gradient / warning / danger / positive) |
+| **Typography** | Pretendard Variable, font-size 050(12px)-900(48px), weight 400·500·600·700, line-height regular(150%) / compact(130%) |
+| **Spacing** | 기본 단위 4px, space-050(4px) - space-900(60px) |
 | **Breakpoints** | `$sm` 0px(mobile) / `$md` 780px(tablet) / `$lg` 1060px(desktop), SCSS mixin 4종 |
 | **Icon** | Icon Button (size sm·lg / color white·gray·black·theme / disabled) + SNS Icons (Instagram · GitHub · YouTube · LinkedIn · link 등) |
 | **Logo** | LOGO 단독형 + LOGO w.slogan, 기수별 컬러 토큰 적용 구조 |
@@ -35,7 +36,7 @@ https://www.figma.com/design/EVxUFhOfCTmOXsgED5RU9B/SIDE--sipe-design-system?nod
 
 ## 2. sipe.team 사이트 분석 결과
 
-> 피그마 문서 작성 이후 홈페이지가 업데이트되어, 
+> 4기 기준 피그마 문서 작성 이후 홈페이지가 5기 버전으로 업데이트되어, 
 디자인시스템에 추가 반영이 필요한 항목들을 정리합니다.
 > 
 
@@ -43,7 +44,7 @@ https://www.figma.com/design/EVxUFhOfCTmOXsgED5RU9B/SIDE--sipe-design-system?nod
 
 ### 홈 `/`
 
-- 5기 기준 **오렌지 테마**로 전면 변경 (기존 피그마엔 1~4기 테마만 존재)
+- 5기 기준 **오렌지 테마**로 전면 변경 (기존 피그마엔 1-4기 테마만 존재)
 - **StatCard** 3개 추가 — 누적 지원자 수 / 총 참여자 수 / 누적 미션 수
 - CTA 버튼 2개 병렬 배치 — `6기 모집 알림 신청(filled)` + `링크 공유하기(outlined)`
 - **FloatingActionButton** 신규 — 우측 하단 카카오채널 채팅 버튼 (전 페이지 공통)
@@ -70,3 +71,10 @@ https://www.figma.com/design/EVxUFhOfCTmOXsgED5RU9B/SIDE--sipe-design-system?nod
 
 - 콘텐츠 탭 추가 — `발표 영상 / 블로그` → **Tab 컴포넌트** 필요
 - 영상 콘텐츠 **VideoCard** 형태 — 썸네일 이미지 + 제목 + `보러가기` 버튼
+
+
+### 체감하고 있는 시급한 부분
+
+- 컬러 시멘틱 토큰 재정의
+- 5기 버전 컬러 토큰 정의
+- 바뀐 사이트 기준으로 필요한 컴포넌트 우선순위대로 디자인
