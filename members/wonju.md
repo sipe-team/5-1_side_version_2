@@ -8,8 +8,91 @@
 
 ## 활동 기록
 
+
+### Week 02
+
+## 맡은 작업
+
+- `avatar`, `typography`, `ContentWithTitle` 컴포넌트 및 토큰 현안 파악
+
+---
+
+## 컴포넌트 현안 파악
+
+### Avatar (`packages/avatar`)
+
+기본 구조(size, shape, fallback, asChild)는 갖춰져 있음. 보완이 필요한 지점:
+
+- `Avatar.module.css`에 `background-color: #e2e8f0`, `color: #2d3748` 하드코딩
+  → 시멘틱 토큰으로 교체 필요 (`--color-bg-avatar`, `--color-text-avatar-fallback`)
+- size/shape 값이 JS 함수로 인라인 style에 주입되는 구조
+  → CSS Variables로 통일하면 토큰 연동이 더 자연스러움
+- fallback이 이미지 실패 시 `alt` 텍스트를 그대로 노출하는 방식
+  → 이니셜 처리(e.g. "이원주" → "이") 등 UX 개선 여지 있음
+- Group Avatar(여러 아바타 겹침), 상태 배지(온라인/오프라인) 미구현
+  → sipe.team People 섹션 등에서 필요 여부 확인 후 추가 검토
+
+### Typography (`packages/typography`)
+
+fontSize/fontWeight/lineHeight는 `@sipe-team/tokens`를 참조하여 비교적 깔끔하게 구현됨. 보완 지점:
+
+- `color` prop이 `ComponentProps<'p'>`에서 상속된 HTML `color` 어트리뷰트
+  → 타입이 `string`으로 너무 열려 있어, 시멘틱 토큰 키를 받도록 좁힐 필요 있음
+- 기본 태그가 `<p>` 고정이라 heading(h1~h6) 등 다른 태그는 `asChild`로만 대응 가능
+  → `as` prop 또는 `variant` prop(heading/body/caption 등) 추가를 검토
+- 텍스트 말줄임(`truncate`), 정렬(`align`) 등 자주 쓰는 유틸리티 prop 없음
+  → sipe.team 실사용 패턴 보고 최소한으로 추가 검토
+
+### ContentWithTitle (sipe.team 로컬 → side 이관)
+
+`sipe.team/src/components/atoms/ContentWithTitle/index.tsx`에 로컬 컴포넌트로 존재.
+Activity, Recruit, People, FAQ 등 여러 페이지 섹션에서 사용 중.
+
+현재 구현 요약:
+```tsx
+// Flex(column, center) + Typography(title) + children 구조
+<ContentWithTitle title="제목" titleColor={color.white} titleSize={36}>
+  {children}
+</ContentWithTitle>
+```
+
+side 이관 시 정리할 사항:
+- 현재 `titleColor` 기본값이 `color.white` (Base Token 직접 참조)
+  → 시멘틱 토큰(`--color-text-section-title` 등)으로 교체
+- sipe.team은 SCSS 사용, side는 CSS Modules 사용 → CSS 파일 포맷 변환 필요
+- `titleSize` prop 타입이 `36 | 12 | 14 | ...` 리터럴 유니언 → `FontSize` 타입 재사용으로 정리
+
+---
+
+## 시멘틱 토큰 작업 계획
+
+### 현황
+
+`packages/tokens/src/`에는 `colors.ts`(Base Token 110개), `fonts.ts`만 존재.
+`semantic.ts` 없음. 컴포넌트들이 hex 직접 참조하거나 Base Token을 직접 씀.
+
+### 초안: 담당 컴포넌트 기준 필요 토큰 목록
+
+| 시멘틱 토큰 | Base Token 참조 | 사용처 |
+|-------------|-----------------|--------|
+| `color-bg-avatar` | `gray200` (`#e4e4e7`) | Avatar fallback 배경 |
+| `color-text-avatar-fallback` | `gray700` (`#3f3f46`) | Avatar fallback 텍스트 |
+| `color-text-default` | `gray900` | Typography 기본 색 |
+| `color-text-subtle` | `gray600` | Typography 보조 텍스트 |
+| `color-text-section-title` | `white` | ContentWithTitle 제목 |
+| `color-bg-surface` | `gray50` | 섹션 배경 |
+
+### 디자이너 협업 프로세스
+
+```
+1. 개발 측 초안 작성 (위 목록 기준)
+2. 디자이너(양정민님) Figma 변수명과 대조 → 이름 합의
+3. packages/tokens/src/semantic.ts 작성
+4. avatar, typography, ContentWithTitle에 파일럿 적용
+5. 나머지 컴포넌트로 점진 확대
+```
+
 ### Week 01
-----
 
 ## 들어가기 전
 
