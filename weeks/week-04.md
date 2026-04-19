@@ -2,13 +2,13 @@
 
 ## 전체
 - [ ] ⚠️ 모임 통장 5만원 선입금 -> 이원주,염진호,양정민,오소현,배지훈,김영빈,전민지 완료! 04.19 기준
-- [ ] 도메인 -> side.sipe.team (docs) / storybook.side.sipe.team (storybook) 확정?
+- [x] 도메인 -> side.sipe.team (docs) / storybook.side.sipe.team (storybook) 확정?
 
 ## 컴포넌트팀
 - [x] ✅ 브랜치 분리 관련 슬랙 논의 진행 -> 소현님 정리 & 정민님 셋팅완료!
-- [ ] 금주 작업 관련 이슈 업로드 
-- [ ] ContentWithTitle 관련 디자인팀 내 작업 내용 확인
-- [ ] 버튼, 카드 컴포넌트 이후 디자인 작업 우선순위 확정 및 양정민님께 전달
+- [x] 금주 작업 관련 이슈 업로드 
+- [x] ContentWithTitle 관련 디자인팀 내 작업 내용 확인
+- [x] 버튼, 카드 컴포넌트 이후 디자인 작업 우선순위 확정 및 양정민님께 전달
 
 ## 배지훈
 - [x] github 계정 지훈님께 전달 (코드오너 설정 권한 등)
@@ -31,11 +31,15 @@
 # 📑 문서화팀 내용 공유
 
 ## 염진호
+- pnpm 버전업 작업 9 -> 10
+- sideEffect 의존성 제거
 
 ## 이정민
+- branch convention 정리
+- Agent, Claude 정리
+- docs sync up
 
 ## 타팀 요청 사항
-TODO:
 
 # 🛠️ 컴포넌트팀 내용 공유
 
