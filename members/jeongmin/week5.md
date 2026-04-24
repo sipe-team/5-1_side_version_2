@@ -22,7 +22,7 @@
 ## 미션 발표 자료 초안 작성
 
 - 피그마 발표 자료 제작
-  - 프로토타입 입히기 완료(애니메이션)
+  - 프로토타입 입히기 완료(애니메이션)- fit width and height 하고 봐주세요!
     https://www.figma.com/proto/EVxUFhOfCTmOXsgED5RU9B/%F0%9F%86%95SIDE--sipe-design-system?node-id=95-3682&viewport=1101%2C572%2C0.02&t=6K8tOUljYjYKQ5f1-1&scaling=min-zoom&content-scaling=fixed&page-id=95%3A1275
 
   - 팀별로
