@@ -9,6 +9,88 @@
 ## 활동 기록
 
 
+### Week 04
+
+## 맡은 작업
+
+- 토큰 아키텍처 및 네이밍 컨벤션 정의 (side#219) ✅ — PR #246
+- Primitive 토큰 정의 (side#220) ✅ — PR #248
+- Semantic 토큰 초안 설계 (side#221) — 이번 주 목표
+
+---
+
+## 진행 내용
+
+### 토큰 아키텍처 및 네이밍 컨벤션 정의 (side#219)
+
+레퍼런스 디자인 시스템(Toss tds, Atlassian, Adobe Spectrum, shadcn, Radix) 비교 분석 후 계층 구조 확정:
+
+- 2계층 구조 채택: Primitive / Semantic
+- 네이밍: JSON 키는 `.` 중첩 (`color.text.primary`), CSS 변수명은 하이픈 (`--side-color-text-primary`)
+- Semantic 원칙: Primitive alias만 참조, 원시값 직접 사용 금지
+- 다크 모드가 기본값: `:root`에 dark 값을 기본 주입, `[data-mode="light"]`로 라이트 모드 전환
+- theme switching: `data-mode` (light/dark) + `data-theme` (SIPE 기수별 브랜드 색) 이중 attribute
+- 의사결정 기록: `.github/decisions/token-architecture.md`, `.github/decisions/token-naming-convention.md`
+
+### Primitive 토큰 정의 (side#220)
+
+v1 감사 결과를 기반으로 전 영역 Primitive 토큰 정의:
+
+| 영역 | 주요 내용 |
+|------|-----------|
+| Color | 기존 SIPE v1 팔레트 확장, 계열별 10단계 (50~950) |
+| Spacing | 4px 베이스 10단계 (4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64) |
+| Radius | 숫자 키 4단계 + full (2 / 4 / 8 / 12 / full) |
+| Typography | font-family, size, weight, line-height, letter-spacing |
+
+W3C DTCG JSON 포맷 준수, v1 감사에서 발견된 하드코딩 값(8px, 12px, 0.2s 등) 커버 검증 완료.
+
+---
+
+### Week 03
+
+## 맡은 작업
+
+- 시멘틱 토큰 작업 전체 설계
+- 에픽 및 하위 태스크 이슈 생성 (side#217 에픽, #218~#226 하위 이슈)
+- v1 토큰 사용 현황 감사 (side#218) ✅ — PR #243
+
+---
+
+## 진행 내용
+
+### 시멘틱 토큰 에픽 설계 및 이슈 생성
+
+SIPE Design System v2 토큰 시스템 구축 에픽 및 9개 하위 이슈 생성:
+
+| 이슈 | 제목 | PR |
+|------|------|----|
+| side#217 (에픽) | 토큰 시스템 구축 (Primitive / Semantic 2계층 + Figma 동기화) | — |
+| side#218 | v1 토큰 사용 현황 감사 | #243 ✅ |
+| side#219 | 토큰 아키텍처 및 네이밍 컨벤션 정의 | #246 ✅ |
+| side#220 | Primitive 토큰 정의 | #248 |
+| side#221 | Semantic 토큰 초안 설계 | — |
+| side#222 | Style Dictionary 빌드 파이프라인 구축 | — |
+| side#223 | GitHub Actions CI 구축 | — |
+| side#224 | Tokens Studio + Figma Variables 연동 | — |
+| side#225 | 샘플 컴포넌트 토큰 마이그레이션 | — |
+| side#226 | 문서화 및 마이그레이션 가이드 | — |
+
+다크 모드는 이번 스코프 외이나 언제든 확장 가능한 구조로 설계.
+
+### v1 토큰 사용 현황 감사 (side#218)
+
+주요 발견 사항:
+
+- **토큰 우회**: Tooltip, Avatar가 hex 직접 하드코딩
+- **토큰 미사용**: color, fontSize, fontWeight, lineHeight 정의는 있으나 컴포넌트 import 거의 없음
+- **누락 토큰**: spacing, border-radius, z-index, animation(duration/easing) 전무
+- **불일치 누적**: `border-radius: 8px vs 12px`, `transition: 0.2s vs 0.3s vs 150ms` 등 컴포넌트마다 제각각
+
+감사 결과를 `.github/decisions/` 에 md 파일로 기록.
+
+---
+
 ### Week 02
 
 ## 맡은 작업
