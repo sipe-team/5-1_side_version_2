@@ -137,14 +137,22 @@
 
 # Week5 
 ## 진행한 내용 
-* Tooltip 접근성개선 작업
- * 코멘트 확인 및 코드 수정
-## 진행 중인 내용 
-* Tooltip 2차 리팩토링 (코멘트에서 제안받은 내용들 반영)
-   ⏺ Tooltip 리팩토링 계획                                                                                                                 
-      1. useTooltip.tsx → useTooltip.ts rename
-      3. 훅 내부 로직 수정
-        3-1. delay 기반 open/close
-        3-2. trigger 핸들러 훅 내부로 통합                                                                                                           3-3. handlePosition RAF 적용                                                                                                           4. 컴포넌트 수정                                                                                                                 
-          4-1. ARIA 속성 추가
-          4-2. createPortal className 정리                                                                                              
+* Tooltip 접근성개선 작업 코멘트 확인 및 코드 수정
+  
+### 진행 중인 내용
+- Tooltip 2차 리팩토링 (코멘트에서 제안받은 내용 반영)
+
+---
+
+### Tooltip 리팩토링 계획
+
+- [ ] 1. `useTooltip.tsx` → `useTooltip.ts`로 파일명 변경
+
+- [ ] 2. 훅 내부 로직 수정
+  - [ ] 2-1. delay 기반 open / close 처리
+  - [ ] 2-2. trigger 핸들러를 훅 내부로 통합
+  - [ ] 2-3. `handlePosition`에 RAF 적용
+
+- [ ] 3. 컴포넌트 수정
+  - [ ] 3-1. ARIA 속성 추가
+  - [ ] 3-2. `createPortal` 관련 className 정리
