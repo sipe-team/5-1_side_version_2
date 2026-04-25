@@ -139,3 +139,30 @@
 - 진행 내용:
 - 회의 내용 반영:
 - PR 링크:
+
+---
+
+## Week 05
+
+
+### 진행 내용
+`packages/*/package.json`이 PR마다 조금씩 달라지는 문제를 막기 위한 논블로킹 일관성 시스템 도입
+
+| 항목 | **syncpack** | **@manypkg/cli** | **현재 (커스텀)** |
+  | --- | --- | --- | --- |
+  | 카테고리 | 의존성 버전 일관성 | 모노레포 구조 무결성 | 자체 정책
+  | 설정 파일 | `.syncpackrc.json` | 없음 (빌트인 룰) |
+  | `scripts` 값 일치 | ❌ | ❌ | ✅ |
+  | `publishConfig.access/registry` | ❌ | ❌ | ✅ |
+  | `sideEffects` 값 enum | ❌ | ❌ | ✅ |
+  | `catalog:` 참조 강제 | ✅ (v14+) | ❌ | ✅ |
+  | `workspace:*` 표기 통일 | ✅ | 부분 | ✅ |
+  | 내부 dep 버전 일치 | 부분 | ✅ | ❌ (workspace가 처리) |
+  | `license`/`repository` 필수 | ❌ | ✅ | ❌ |
+  | fix 자동화 | ✅ | ✅ | ❌ (의도) |
+  | 유명 DS 채택 | Mantine, MS Fluent UI | 0건 (아마?) | 자체 |
+
+> 처음엔 mantine에서 syncpack을 쓰길래 셋업했었는데, catelog:, workspace까지만 잡아주길래 살짝 아쉬워서 찾아보니 @manypkg/cli도 있는데 요것도 아쉬워서 직접 package를 순회하면서 제가 설정한 셋업에 깐깐하게 맞추고 싶어서 스크립트를 만들었습니다! (w/claude)
+
+### PR 링크
+[chore: enforce package.json consistency across the workspace#252](https://github.com/sipe-team/side/pull/252)
