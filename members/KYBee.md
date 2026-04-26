@@ -193,3 +193,29 @@
 | 스타일 적용 방식 | `direction`, `align`, `justify`, `wrap`은 사전 정의된 값만 사용하고, `basis`, `grow`, `shrink`, `gap`은 inline style로 적용함 |
 | display 규칙 | `inline=true`이면 `inline-flex`, `inline=false`이면 `flex`로 렌더링됨 |
 | 추가 보장 | `style`은 기본 inline style과 병합되고, `asChild=true`이면 자식 태그를 유지한 채 flex 스타일이 적용됨 |
+
+---
+
+### Week 05
+
+#### 진행 내용
+1. `sipe.team` 내부의 flex 레이아웃 사용 패턴을 분석함.
+2. 분석 결과를 마이그레이션 가능 범위 기준으로 유형화함.
+3. 우선 적용 가능한 1유형 대상을 정리하고 `side/Flex` 기준의 전환 방향을 설정함.
+
+#### 관련 링크
+- [이슈](https://github.com/sipe-team/side/issues/253)
+
+#### flex 마이그레이션 유형 정리
+
+| 유형 | 내용 |
+| --- | --- |
+| 1 유형 | 단순 flex wrapper를 `side/Flex`로 바로 치환할 수 있는 경우 |
+| 2 유형 | 이미 `Flex`를 사용하고 있지만 CSS에 남아 있는 flex 관련 선언을 함께 정리할 수 있는 경우 |
+| 3 유형 | 반응형 처리나 중첩 구조로 인해 전체 치환보다는 부분 적용이 적절한 경우 |
+
+#### Week 05 정리
+
+- `sipe.team`에서 flex가 사용되는 위치를 먼저 분석해 일괄 치환이 아닌 유형별 접근이 필요하다고 판단함.
+- 단순 wrapper 중심의 1유형을 우선 대상으로 잡아 실제 마이그레이션 범위를 줄이고 적용 가능성을 높이는 방향으로 정리함.
+- 이후 테스트 보강과 실제 치환 작업을 이어갈 수 있도록 기준 이슈를 문서화함.
