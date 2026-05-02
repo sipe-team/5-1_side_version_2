@@ -9,6 +9,68 @@
 ## 활동 기록
 
 
+### Week 05
+
+## 맡은 작업
+
+- Semantic 토큰 초안 설계 (side#221) ✅ — PR #258
+- Style Dictionary 빌드 파이프라인 구축 (side#222) ✅ — PR #261
+- GitHub Actions CI 구축 (side#223) ✅ — PR #270
+- Tokens Studio + Figma Variables 연동 (side#224) — PR #274 (머지 대기 중)
+
+---
+
+## 진행 내용
+
+### Semantic 토큰 초안 설계 (side#221)
+
+Week 04에 정의한 Primitive 토큰을 기반으로 전 영역 Semantic 토큰 초안 작성:
+
+| 카테고리 | 주요 토큰 예시 |
+|----------|---------------|
+| Color / Text | `color.text.primary`, `color.text.secondary`, `color.text.disabled` |
+| Color / Background | `color.bg.surface`, `color.bg.elevated`, `color.bg.overlay` |
+| Color / Border | `color.border.default`, `color.border.focus` |
+| Color / Brand | `color.brand.primary`, `color.brand.secondary` |
+| Color / Feedback | `color.feedback.error`, `color.feedback.warning`, `color.feedback.success` |
+
+- Primitive alias만 참조, 원시값 직접 사용 금지 원칙 준수
+- 다크 모드 대응: `:root`에 dark 기본값, `[data-mode="light"]` 오버라이드 구조로 각 토큰에 양쪽 값 정의
+- `data-theme` 분기(SIPE 기수별 브랜드 색) 확장 가능하도록 설계
+
+### Style Dictionary 빌드 파이프라인 구축 (side#222)
+
+W3C DTCG JSON 포맷 토큰 파일을 다중 출력 포맷으로 변환하는 파이프라인 구축:
+
+- **입력**: `tokens/primitive.json`, `tokens/semantic.json` (DTCG 포맷)
+- **출력 포맷**:
+  - CSS Custom Properties (`tokens.css`) — `:root` / `[data-mode]` / `[data-theme]` 블록
+  - TypeScript 상수 (`tokens.ts`) — 자동완성 지원용
+- 플랫폼별 config 분리(`config/web.js`)로 향후 iOS/Android 확장 여지 확보
+- `pnpm build:tokens` 단일 명령으로 전체 빌드 가능하도록 스크립트 구성
+
+### GitHub Actions CI 구축 (side#223)
+
+토큰 파일 변경 시 자동으로 빌드 산출물을 검증하는 CI 워크플로 구성:
+
+- **트리거**: `tokens/**` 경로 변경 포함 PR 및 `main` 푸시
+- **검증 단계**:
+  1. DTCG 포맷 유효성 검사 (JSON schema lint)
+  2. Style Dictionary 빌드 실행 후 산출물 생성 확인
+  3. TypeScript 타입 오류 체크
+- 빌드 산출물을 아티팩트로 업로드해 PR 리뷰 시 미리 확인 가능하도록 구성
+
+### Tokens Studio + Figma Variables 연동 (side#224)
+
+Figma ↔ 코드 토큰 동기화 워크플로 구축 (PR #274 머지 대기 중):
+
+- Tokens Studio 플러그인을 통해 Figma Variables 값을 레포 JSON 파일과 연결
+- 동기화 방향: Figma → GitHub(Push) / GitHub → Figma(Pull) 양방향 지원
+- 브랜치 전략: 토큰 변경 시 전용 브랜치 생성 후 PR → CI 통과 후 머지되는 흐름으로 정착
+- 디자이너(양정민님)와 Figma Variables 이름 ↔ 코드 토큰 이름 최종 합의 완료
+
+---
+
 ### Week 04
 
 ## 맡은 작업
