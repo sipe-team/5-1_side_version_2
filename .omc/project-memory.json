@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775314405236,
+  "lastScanned": 1777700854807,
   "projectRoot": "/Users/wonju/Developer/5-1_side_version_2",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "discussions",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1775314405204,
+      "lastAccessed": 1777700854792,
       "keyFiles": [
         "000-OT.md",
         "001-tech-directions.md",
@@ -46,18 +46,21 @@
     "members": {
       "path": "members",
       "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1775314405205,
+      "fileCount": 8,
+      "lastAccessed": 1777700854792,
       "keyFiles": [
         "G-hoon.md",
-        "wonju.md"
+        "KYBee.md",
+        "jeon-minji.md",
+        "jeongmin.md",
+        "jinho.md"
       ]
     },
     "references": {
       "path": "references",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1775314405205,
+      "lastAccessed": 1777700854792,
       "keyFiles": [
         "toss-design-system.md"
       ]
@@ -65,18 +68,21 @@
     "weeks": {
       "path": "weeks",
       "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1775314405205,
+      "fileCount": 4,
+      "lastAccessed": 1777700854793,
       "keyFiles": [
-        "week-01.md"
+        "week-01.md",
+        "week-02.md",
+        "week-03-components.md",
+        "week-03.md"
       ]
     }
   },
   "hotPaths": [
     {
       "path": "members/wonju.md",
-      "accessCount": 8,
-      "lastAccessed": 1775315853936,
+      "accessCount": 3,
+      "lastAccessed": 1777701330408,
       "type": "file"
     }
   ],
