@@ -268,3 +268,34 @@
 - 밑에 항목은 참고용입니다.
   - 개선한 항목(7개) ; image, tooltip, flex, button, card, icon, tokens
   - 전체 항목(14개) : input, checkbox, radio, image, tooltip, badge, skeleton, flex, button, card, icon, avatar, typography, tokens
+
+---
+
+### Week 07
+
+#### 진행 내용
+1. Week 05에서 정리하고 진행하던 `sipe.team` flex 마이그레이션을 추가로 이어서 적용함.
+2. 안정적으로 변경하기 위해 테스트를 먼저 작성하고, 마이그레이션 후 필요한 테스트만 남기는 흐름으로 작업함.
+3. `RecruitmentSummary`, `Badge`, `ContactSection`의 flex wrapper를 `@sipe-team/side`의 `Flex`로 전환함.
+4. 반응형 flex 처리는 현재 `side/Flex`의 계약 범위 밖에 있어 SCSS에 유지하고, 추후 개선 대상으로 분리함.
+
+#### 관련 링크
+- [sipe.team PR](https://github.com/sipe-team/sipe.team/pull/186)
+
+#### 적용한 마이그레이션 방식
+
+| 단계 | 내용 |
+| --- | --- |
+| 테스트 추가 | 기존 렌더링과 링크 동작이 깨지지 않도록 필요한 테스트를 먼저 추가 |
+| 마이그레이션 | flex wrapper를 `side/Flex`로 치환 |
+| 테스트 정리 | 구현 세부사항에 가까운 과한 검증은 제거하고 필요한 테스트만 유지 |
+| 검증 | 테스트, lint, prettier, Vercel preview 상태 확인 |
+
+#### 이번 주 정리
+- `sipe.team`의 flex 마이그레이션을 기존 작업에 이어 추가로 진행함.
+- 한 번에 넓게 바꾸기보다, 작은 단위 PR을 만드는 방식이 안전하다고 판단함.
+- 현재 `side/Flex`는 정적 flex 값에는 적용 가능하지만, 반응형 props는 아직 지원하지 않으므로 별도 설계가 필요하다고 판단함.
+
+#### 다음 작업
+- 남아 있는 `sipe.team` flex 사용처 중 이관 가능한 후보를 추가로 마이그레이션할 예정임.
+- 추후에는 반응형 props를 `side/Flex` 계약에도 적용하고, 디자인 토큰을 고려해 `sipe.team`의 반응형 flex 처리도 함께 이관하는 방향을 계획하고 있음.
