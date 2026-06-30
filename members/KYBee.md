@@ -337,7 +337,7 @@
 
 ---
 
-### Week 09
+### 2nd-Sprint-1
 
 #### 진행 내용
 1. `sipe.team`에 남아 있는 flex 관련 SCSS와 `@sipe-team/side`의 `Flex` 사용처를 다시 전체 스캔함.
