@@ -334,3 +334,41 @@
 #### 다음 작업
 - Sprint 1 범위로 진행 중인 Flex 마이그레이션을 1차 마무리할 예정임.
 - Flex에 토큰을 적용할 수 있는 대상과 범위를 함께 식별할 예정임.
+
+---
+
+### Week 09
+
+#### 진행 내용
+1. `sipe.team`에 남아 있는 flex 관련 SCSS와 `@sipe-team/side`의 `Flex` 사용처를 다시 전체 스캔함.
+2. 현재 `Flex` 계약으로 옮길 수 있는 정적 flex 영역과, 반응형 계약이 필요해 후속 작업으로 두는 영역을 분리함.
+3. 토큰 도입 전에도 전환 가능한 후보를 추가로 마이그레이션하고, 기존 렌더링을 보존하기 위한 테스트를 함께 작성함.
+4. `side`의 `Flex`가 `{ sm, md, lg }` responsive 값을 받을 수 있도록 계약을 확장하는 PR을 별도로 정리함.
+
+#### 관련 링크
+- [sipe.team Flex 마이그레이션 PR](https://github.com/sipe-team/sipe.team/pull/188)
+- [side Flex responsive 계약 확장 PR](https://github.com/sipe-team/side/pull/284)
+
+#### flex 마이그레이션 상태 정리
+
+| 분류 | 비율 | 내용 | 예시 |
+| --- | ---: | --- | --- |
+| 전환 완료/거의 완료 | 약 55% | 정적 flex wrapper 중심으로 `side/Flex`를 적용한 영역 | `Badge`, `RecruitmentSummary`, `UserCard`, `ActiveVideoCard`, `ActiveCard`, `Button`, `SponsorImage`, `RecruitBarChart`, `Recruit` charts wrapper |
+| 후속 전환 대상 | 약 45% | 모바일/데스크톱에 따라 `gap`, `direction`, `justify`, `align` 등이 달라 responsive Flex 계약 적용 후 다시 보는 것이 적절한 영역 | `Footer`, `Navigation`, `Table`, `Card`, `ContactSection`, `ActivitiesSection` |
+
+#### side Flex responsive 계약 정리
+
+| 항목 | 내용 |
+| --- | --- |
+| 기존 호환 | `direction="column"`, `gap="12px"`처럼 기존 단일 값 사용 방식은 유지 |
+| 추가 계약 | `direction`, `align`, `justify`, `wrap`, `gap`에서 `{ sm, md, lg }` 객체 값을 추가로 지원 |
+| 처리 방식 | 현재는 Flex 패키지 내부 responsive 계약으로 처리 |
+| 추후 방향 | `@sipe-team/tokens`에 정식 breakpoint token이 생기면 외부 사용 방식은 유지하고 내부 구현만 token 기반으로 교체할 수 있도록 정리 |
+
+#### 이번 주 정리
+- `sipe.team`에서는 토큰 도입 전에도 옮길 수 있는 정적 flex wrapper를 추가로 전환해 마이그레이션 범위를 넓힘.
+- 남은 영역은 대부분 반응형 값과 연결되어 있어, `side/Flex`의 responsive 계약이 먼저 필요하다고 판단함.
+- `side`에서는 기존 단일 값 prop을 유지하면서 responsive 객체 값을 받을 수 있는 방향으로 `Flex` 계약을 확장함.
+
+#### 다음 작업
+- `side`에 이번 responsive 계약을 반영하고, 이후 `sipe.team`에서 해당 계약을 사용하도록 수정할 계획임.
