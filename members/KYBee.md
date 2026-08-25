@@ -372,3 +372,26 @@
 
 #### 다음 작업
 - `side`에 이번 responsive 계약을 반영하고, 이후 `sipe.team`에서 해당 계약을 사용하도록 수정할 계획임.
+
+---
+
+### 2nd-Sprint-2
+
+#### 진행 내용
+1. Sprint 1에서 설계한 `side/Flex` responsive API의 리뷰 내용을 반영하고, `dev` 브랜치에 병합함.
+2. 아직 responsive API가 포함된 패키지가 배포되지 않아, `side`를 로컬에서 빌드해 `sipe.team`에 연결한 상태로 Flex 마이그레이션을 진행함.
+3. 마이그레이션 대상 140개 중 138개를 responsive props로 전환해 약 98%를 완료함.
+4. 남은 약 2%에 해당하는 Navigation 선언 2개는 전환 과정에서 기존 DOM과 레이아웃 구조까지 변경해야 하므로, 현재 구현을 유지하는 편이 적절하다고 판단함.
+5. 패키지 배포 전까지 계획했던 `sipe.team` 마이그레이션 구현을 완료함.
+
+#### 관련 링크
+- [side Flex responsive API PR](https://github.com/sipe-team/side/pull/284)
+- [sipe.team responsive Flex 마이그레이션 PR](https://github.com/sipe-team/sipe.team/pull/189)
+
+#### 이번 주 정리
+- `side`의 responsive Flex API를 기준으로 계획했던 `sipe.team` 마이그레이션 구현을 완료함.
+- 실제 패키지 버전과 lockfile 갱신 및 최종 검증은 `side` 패키지 배포 이후 진행하도록 분리함.
+
+#### 배포 후 반영 사항
+- responsive Flex가 포함된 `side` 패키지가 배포되면 `sipe.team`의 `@sipe-team/side` 버전과 lockfile을 갱신할 예정임.
+- 갱신된 패키지를 기준으로 테스트와 production build를 확인한 뒤, Draft PR을 Ready for review로 전환하고 병합할 예정임.
